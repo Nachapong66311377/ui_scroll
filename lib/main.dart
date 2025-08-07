@@ -1,76 +1,77 @@
 import 'package:flutter/material.dart';
-
+ 
 void main() {
   runApp(const MyApp());
 }
-
+ 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GridView Example',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(),
     );
   }
 }
-
-class MyHomePage extends StatelessWidget {
+ 
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
+ 
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+ 
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // สร้าง 6 เชดสี (สามารถเปลี่ยนสีตามต้องการ)
-    final List<Color> colorShades = [
-      Colors.teal.shade100,
-      Colors.teal.shade200,
-      Colors.teal.shade300,
-      Colors.teal.shade400,
-      Colors.teal.shade500,
-      Colors.teal.shade600,
-    ];
-
+    // สร้างรายการ 100 ไอเท็ม
+   
+ 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GridView.builder 100 ช่อง'),
+        title: const Text('Chapter 6 - GridView.builder'),
         backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        itemCount: 100, // จำนวนไอเท็มทั้งหมด
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3, // 3 คอลัมน์
-          crossAxisSpacing: 5.0,
-          mainAxisSpacing: 5.0,
-          childAspectRatio: 2, // กว้างมากกว่าสูง (1.5:1)
+      body: Stack(children: <Widget>[
+    // รูปภาพพื้นหลัง
+    Image.network('https://picsum.photos/id/1015/300/300', fit: BoxFit.cover),
+ 
+    // Text ที่กำหนดตำแหน่งไว้มุมบนซ้าย
+    Positioned(
+      top: 10.0,
+      left: 10.0,
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        color: Colors.black.withOpacity(0.5), // พื้นหลังกึ่งโปร่งใส
+        child: const Text(
+          'Top Left',
+          style: TextStyle(color: Colors.white),
         ),
-        itemBuilder: (context, index) {
-          // เลือกสีแบบวน 6 สี
-          final color = colorShades[index % colorShades.length];
-
-          return Container(
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'Cell $index',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          );
-        },
       ),
+    ),
+ 
+    // Icon ที่กำหนดตำแหน่งไว้มุมล่างขวา
+    Positioned(
+      bottom: 10.0,
+      right: 10.0,
+      child: Container(
+         padding: const EdgeInsets.all(4.0),
+         decoration: BoxDecoration(
+           color: Colors.red,
+           shape: BoxShape.circle, // ทำให้เป็นป้ายวงกลม
+         ),
+         child: const Icon(Icons.notifications, color: Colors.white, size: 20),
+      ),
+    ),
+  ],
+ 
+      )
+     
     );
   }
 }

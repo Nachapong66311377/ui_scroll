@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (BuildContext context, int index) {
           // ไล่เฉดสีด้วยเฉดของ Colors.teal
           final List<int> shades = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
-          int shadeIndex = (index ~/ 1).clamp(0, shades.length - 2); // เปลี่ยนทุก 3 รายการ
+          int shadeIndex = (index ~/ 1).clamp(0, shades.length - 2); // เปลี่ยนทุก 1 รายการ
           int shade = shades[shadeIndex];
 
           return Container(
