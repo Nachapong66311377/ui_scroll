@@ -54,6 +54,30 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     ),
+    Positioned(
+      bottom: 10.0,
+      left: 10.0,
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        color: Colors.black.withOpacity(0.5), // พื้นหลังกึ่งโปร่งใส
+        child: const Text(
+          'Bottom Left',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    ),
+    Positioned(
+      top: 10.0,
+      right: 10.0,
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        color: Colors.black.withOpacity(0.5), // พื้นหลังกึ่งโปร่งใส
+        child: const Text(
+          'Top Right',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    ),
  
     // Icon ที่กำหนดตำแหน่งไว้มุมล่างขวา
     Positioned(
